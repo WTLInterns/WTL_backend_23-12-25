@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-WtlApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.workshop.WtlApplication",
+            "projectName": "asu",
+            "args": "",
+            "vmArgs": "-Xmx1024m -Xms512m -Dserver.port=8085",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Run WtlApplication (Simple)",
+            "request": "launch",
+            "mainClass": "com.workshop.WtlApplication",
+            "projectName": "asu",
+            "console": "integratedTerminal"
+        }
+    ]
+}

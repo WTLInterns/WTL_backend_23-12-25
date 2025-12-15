@@ -1,0 +1,68 @@
+===============================================================================
+IMPORTANT: Google OAuth Configuration Required
+===============================================================================
+
+The application will now START without errors, but Google Sign-In will NOT work 
+until you add the OAuth configuration to application.properties.
+
+STEPS TO ENABLE GOOGLE SIGN-IN:
+===============================================================================
+
+1. Navigate to: 
+   C:\Users\jaywa\Desktop\WTL\WTL_backend_28-08-25\src\main\resources\
+
+2. If application.properties file exists:
+   - Open it and ADD the following lines at the end
+
+3. If application.properties file does NOT exist:
+   - Create a new file named: application.properties
+   - Add ALL your existing database configuration
+   - Then ADD the following OAuth configuration
+
+===============================================================================
+COPY AND PASTE THIS INTO application.properties:
+===============================================================================
+
+# Google OAuth2 Configuration
+spring.security.oauth2.client.registration.google.client-id=365994825852-4vulntbu51u5sf4gbo8kkheus2rkbthh.apps.googleusercontent.com
+spring.security.oauth2.client.registration.google.client-secret=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
+spring.security.oauth2.client.registration.google.scope=profile,email
+spring.security.oauth2.client.registration.google.redirect-uri=https://api.worldtriplink.com/login/oauth2/code/google
+
+# OAuth2 Provider Configuration
+spring.security.oauth2.client.provider.google.authorization-uri=https://accounts.google.com/o/oauth2/auth
+spring.security.oauth2.client.provider.google.token-uri=https://oauth2.googleapis.com/token
+spring.security.oauth2.client.provider.google.user-info-uri=https://www.googleapis.com/oauth2/v3/userinfo
+spring.security.oauth2.client.provider.google.user-name-attribute=sub
+
+# Frontend URL
+app.frontend.url=https://worldtriplink.com
+
+===============================================================================
+
+4. Save the file
+
+5. Restart your Spring Boot application
+
+===============================================================================
+WHAT CHANGED:
+===============================================================================
+
+I made the OAuth properties OPTIONAL with default empty values, so:
+- Application WILL START even without OAuth configuration
+- Google Sign-In buttons WILL NOT WORK until you add the configuration above
+- All other features of your application will work normally
+
+===============================================================================
+TO TEST GOOGLE SIGN-IN:
+===============================================================================
+
+1. Add the configuration above to application.properties
+2. Restart the backend
+3. Start the frontend (npm run dev)
+4. Go to https://worldtriplink.com/login
+5. Click "Sign in with Google"
+6. Complete Google authentication
+7. You should be redirected back and logged in
+
+===============================================================================

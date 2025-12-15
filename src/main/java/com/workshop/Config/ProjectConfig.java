@@ -1,0 +1,27 @@
+package com.workshop.Config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.cloudinary.Cloudinary;
+
+@Configuration
+public class ProjectConfig {
+
+    @Bean
+    public Cloudinary getCloudinary() {
+
+        // THIS IS A SECURITY RISK.
+        // Use CloudinaryConfig.java which loads credentials safely from application.properties.
+        // This bean is redundant and dangerous.
+        // Map config = new HashMap<>();
+        // config.put("cloud_name", "dzyhoeurm");
+        // config.put("api_key", "826648439174773");
+        // config.put("api_secret", "wI6oL1bHuwTtDgaq3XBKZuZVpTQ");
+        // config.put("secure", true);
+        return new Cloudinary(); // Return empty, as the primary bean is in CloudinaryConfig
+    }
+}
