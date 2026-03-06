@@ -87,6 +87,7 @@ public class OneFiftyService {
             resp.setSuv(data.getSuv());
             resp.setSuvplus(data.getSuvplus());
             resp.setErtiga(data.getErtiga());
+            resp.setElectric(data.getElectric());
             return resp;
         } catch (Exception e) {
             System.err.println("❌ Error in applyPricing for distance " + distance + " km: " + e.getMessage());
@@ -108,6 +109,7 @@ public class OneFiftyService {
             resp.setHatchback(460);
             resp.setSedan(450);
             resp.setSedanpremium(480);
+            resp.setElectric(resp.getSedanpremium());
             resp.setSuv(2500);
             resp.setSuvplus(2600);
             resp.setErtiga(500);
@@ -115,6 +117,7 @@ public class OneFiftyService {
             resp.setHatchback(650);
             resp.setSedan(700);
             resp.setSedanpremium(750);
+            resp.setElectric(resp.getSedanpremium());
             resp.setSuv(2500);
             resp.setSuvplus(2600);
             resp.setErtiga(800);
@@ -122,6 +125,7 @@ public class OneFiftyService {
             resp.setHatchback(800);
             resp.setSedan(900);
             resp.setSedanpremium(1000);
+            resp.setElectric(resp.getSedanpremium());
             resp.setSuv(2500);
             resp.setSuvplus(2700);
             resp.setErtiga(1100);
@@ -129,6 +133,7 @@ public class OneFiftyService {
             resp.setHatchback(distance * 15);
             resp.setSedan(distance * 18);
             resp.setSedanpremium(distance * 20);
+            resp.setElectric(resp.getSedanpremium());
             resp.setSuv(distance * 25);
             resp.setSuvplus(distance * 27);
             resp.setErtiga(distance * 22);
@@ -137,6 +142,7 @@ public class OneFiftyService {
             resp.setHatchback(distance * 14);
             resp.setSedan(distance * 16);
             resp.setSedanpremium(distance * 18);
+            resp.setElectric(resp.getSedanpremium());
             resp.setSuv(distance * 22);
             resp.setSuvplus(distance * 24);
             resp.setErtiga(distance * 20);
@@ -150,7 +156,7 @@ public class OneFiftyService {
     public PricingResponse updatePricingWithParams(int id,
             int minDistance, int maxDistance,
             int hatchback, int sedan, int sedanpremium,
-            int suv, int suvplus, int ertiga) {
+            int suv, int suvplus, int ertiga, int electric) {
 
         OneFifty existing = repo.findById(id).orElse(null);
 
@@ -163,6 +169,7 @@ public class OneFiftyService {
         existing.setHatchback(hatchback);
         existing.setSedan(sedan);
         existing.setSedanpremium(sedanpremium);
+        existing.setElectric(electric);
         existing.setSuv(suv);
         existing.setSuvplus(suvplus);
         existing.setErtiga(ertiga);
@@ -173,6 +180,7 @@ public class OneFiftyService {
         response.setHatchback(updated.getHatchback());
         response.setSedan(updated.getSedan());
         response.setSedanpremium(updated.getSedanpremium());
+        response.setElectric(updated.getElectric());
         response.setSuv(updated.getSuv());
         response.setSuvplus(updated.getSuvplus());
         response.setErtiga(updated.getErtiga());
@@ -182,7 +190,7 @@ public class OneFiftyService {
 
     public PricingResponse createPricingWithParams(int minDistance, int maxDistance,
             int hatchback, int sedan, int sedanpremium,
-            int suv, int suvplus, int ertiga) {
+            int suv, int suvplus, int ertiga, int electric) {
 
         OneFifty newEntry = new OneFifty();
         newEntry.setMinDistance(minDistance);
@@ -190,6 +198,7 @@ public class OneFiftyService {
         newEntry.setHatchback(hatchback);
         newEntry.setSedan(sedan);
         newEntry.setSedanpremium(sedanpremium);
+        newEntry.setElectric(electric);
         newEntry.setSuv(suv);
         newEntry.setSuvplus(suvplus);
         newEntry.setErtiga(ertiga);
@@ -200,6 +209,7 @@ public class OneFiftyService {
         response.setHatchback(saved.getHatchback());
         response.setSedan(saved.getSedan());
         response.setSedanpremium(saved.getSedanpremium());
+        response.setElectric(saved.getElectric());
         response.setSuv(saved.getSuv());
         response.setSuvplus(saved.getSuvplus());
         response.setErtiga(saved.getErtiga());

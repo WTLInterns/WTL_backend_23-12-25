@@ -7,6 +7,7 @@ public class PriceUpdateRequest {
     private int sedanpremium;
     private int suv;
     private int suvplus;
+    private int electric;
 
     private String sourceState;
     private String sourceCity;
@@ -66,4 +67,7 @@ public class PriceUpdateRequest {
 
     public int getSuvplus() { return suvplus; }
     public void setSuvplus(int suvplus) { this.suvplus = suvplus; }
+
+    public int getElectric() { return electric; }
+    public void setElectric(int electric) { this.electric = electric; }
 }

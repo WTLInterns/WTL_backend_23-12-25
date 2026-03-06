@@ -1217,6 +1217,7 @@ public class CabRestController {
                                 o.setHatchback(pricing.getHatchback());
                                 o.setSedan(pricing.getSedan());
                                 o.setSedanpremium(pricing.getSedanpremium());
+                                o.setElectric(pricing.getElectric());
                                 o.setSuv(pricing.getSuv());
                                 o.setSuvplus(pricing.getSuvplus());
                                 o.setErtiga(pricing.getErtiga());
@@ -1226,6 +1227,7 @@ public class CabRestController {
                                 o.setHatchback(o.getHatchback() * calculatedDistance);
                                 o.setSedan(o.getSedan() * calculatedDistance);
                                 o.setSedanpremium(o.getSedanpremium() * calculatedDistance);
+                                o.setElectric(o.getElectric() * calculatedDistance);
                                 o.setSuv(o.getSuv() * calculatedDistance);
                                 o.setSuvplus(o.getSuvplus() * calculatedDistance);
                                 o.setErtiga(o.getErtiga() * calculatedDistance);
@@ -1234,6 +1236,7 @@ public class CabRestController {
                             o.setHatchback(o.getHatchback() * calculatedDistance);
                             o.setSedan(o.getSedan() * calculatedDistance);
                             o.setSedanpremium(o.getSedanpremium() * calculatedDistance);
+                            o.setElectric(o.getElectric() * calculatedDistance);
                             o.setSuv(o.getSuv() * calculatedDistance);
                             o.setSuvplus(o.getSuvplus() * calculatedDistance);
                             o.setErtiga(o.getErtiga() * calculatedDistance);
@@ -1249,6 +1252,7 @@ public class CabRestController {
                         defaultTrip.setHatchback(defaultTrip.getHatchback() * calculatedDistance);
                         defaultTrip.setSedan(defaultTrip.getSedan() * calculatedDistance);
                         defaultTrip.setSedanpremium(defaultTrip.getSedanpremium() * calculatedDistance);
+                        defaultTrip.setElectric(defaultTrip.getElectric() * calculatedDistance);
                         defaultTrip.setSuv(defaultTrip.getSuv() * calculatedDistance);
                         defaultTrip.setSuvplus(defaultTrip.getSuvplus() * calculatedDistance);
                         defaultTrip.setErtiga(defaultTrip.getErtiga() * calculatedDistance);
@@ -1289,6 +1293,7 @@ public class CabRestController {
                     int hatchbackPrice = chargeableKm * t.getHatchback();
                     int sedanPrice = chargeableKm * t.getSedan();
                     int sedanPremiumPrice = chargeableKm * t.getSedanpremium();
+                    int electricPrice = chargeableKm * t.getElectric();
                     int suvPrice = chargeableKm * t.getSuv();
                     int suvPlusPrice = chargeableKm * t.getSuvplus();
                     int ertigaPrice = chargeableKm * t.getErtiga();
@@ -1296,6 +1301,7 @@ public class CabRestController {
                     t.setHatchback(hatchbackPrice);
                     t.setSedan(sedanPrice);
                     t.setSedanpremium(sedanPremiumPrice);
+                    t.setElectric(electricPrice);
                     t.setSuv(suvPrice);
                     t.setSuvplus(suvPlusPrice);
                     t.setErtiga(ertigaPrice);
@@ -1398,6 +1404,7 @@ public class CabRestController {
                             r.setHatchback(450);
                             r.setSedan(500);
                             r.setSedanpremium(2600);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(2600);
                             r.setSuvplus(2600);
                             r.setErtiga(550);
@@ -1407,6 +1414,7 @@ public class CabRestController {
                             r.setHatchback(650);
                             r.setSedan(700);
                             r.setSedanpremium(2600);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(2600);
                             r.setSuvplus(2600);
                             r.setErtiga(800);
@@ -1416,6 +1424,7 @@ public class CabRestController {
                             r.setHatchback(800);
                             r.setSedan(900);
                             r.setSedanpremium(2600);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(2600);
                             r.setSuvplus(2600);
                             r.setErtiga(1100);
@@ -1425,6 +1434,7 @@ public class CabRestController {
                             r.setHatchback(1000);
                             r.setSedan(1200);
                             r.setSedanpremium(2600);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(2600);
                             r.setSuvplus(2600);
                             r.setErtiga(1400);
@@ -1435,6 +1445,7 @@ public class CabRestController {
                             r.setHatchback(1000 + extraKm * 11);
                             r.setSedan(1200 + extraKm * 12);
                             r.setSedanpremium(2600 + extraKm * 14);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(2600 + extraKm * 16);
                             r.setSuvplus(2600 + extraKm * 19);
                             r.setErtiga(1400 + extraKm * 14);
@@ -1446,6 +1457,7 @@ public class CabRestController {
                             r.setHatchback(1800 + extraKm * 11);
                             r.setSedan(2200 + extraKm * 12);
                             r.setSedanpremium(2600 + extraKm * 14);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(2600 + extraKm * 16);
                             r.setSuvplus(3500 + extraKm * 19);
                             r.setErtiga(2600 + extraKm * 14);
@@ -1485,6 +1497,7 @@ public class CabRestController {
                             r.setHatchback(1800 + extraKm * 11);
                             r.setSedan(2000 + extraKm * 12);
                             r.setSedanpremium(3000 + extraKm * 14);
+                            r.setElectric(r.getSedanpremium());
                             r.setSuv(3000 + extraKm * 16);
                             r.setSuvplus(3000 + extraKm * 19);
                             r.setErtiga(2200 + extraKm * 14);
@@ -1626,7 +1639,7 @@ public class CabRestController {
         return new onewayTrip(
                 null, "", "", "", "",
                 14, 16, 18, 32, 27,
-                "", null, null, 0, 20);
+                "", null, null, 0, 20, 18);
     }
 
     private onewayTrip createDefaultOneWayTrip() {
@@ -1637,7 +1650,7 @@ public class CabRestController {
         return new roundTrip(
                 null, "", "", "", "",
                 11, 12, 14, 19, 20,
-                "", null, null, 0, 14);
+                "", null, null, 0, 14, 14);
     }
 
     @GetMapping("/pricing")
@@ -2569,6 +2582,7 @@ public class CabRestController {
             @RequestParam int hatchback,
             @RequestParam int sedan,
             @RequestParam int sedanpremium,
+            @RequestParam int electric,
             @RequestParam int suv,
             @RequestParam int suvplus,
             @RequestParam int ertiga) {
@@ -2576,7 +2590,7 @@ public class CabRestController {
             PricingResponse response = oneFiftyService.updatePricingWithParams(
                     id, minDistance, maxDistance,
                     hatchback, sedan, sedanpremium,
-                    suv, suvplus, ertiga);
+                    suv, suvplus, ertiga, electric);
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(null);
@@ -2590,6 +2604,7 @@ public class CabRestController {
             @RequestParam int hatchback,
             @RequestParam int sedan,
             @RequestParam int sedanpremium,
+            @RequestParam int electric,
             @RequestParam int suv,
             @RequestParam int suvplus,
             @RequestParam int ertiga) {
@@ -2597,7 +2612,7 @@ public class CabRestController {
             PricingResponse response = oneFiftyService.createPricingWithParams(
                     minDistance, maxDistance,
                     hatchback, sedan, sedanpremium,
-                    suv, suvplus, ertiga);
+                    suv, suvplus, ertiga, electric);
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(null);

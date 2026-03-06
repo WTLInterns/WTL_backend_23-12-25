@@ -15,6 +15,7 @@ public interface Trip {
      public static final int suvplus = 0;
      public static final String status = "";
      public static final int ertiga=0;
+     public static final int electric = 0;
 
 
 }

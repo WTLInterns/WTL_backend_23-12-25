@@ -23,6 +23,7 @@ public class OneFifty {
 	private int sedanpremium;
 	private int suv;
 	private int suvplus;
+	private int electric;
 
 	 private int minDistance;
     private int maxDistance;
@@ -110,6 +111,14 @@ public class OneFifty {
 
     public void setSuvplus(int suvplus) {
         this.suvplus = suvplus;
+    }
+
+    public int getElectric() {
+        return electric;
+    }
+
+    public void setElectric(int electric) {
+        this.electric = electric;
     }
 
     public int getMinDistance() {

@@ -238,6 +238,7 @@ public class TripService {
 			trip.setHatchback(hatchback);
 			trip.setSedan(sedan);
 			trip.setSedanpremium(sedanpremium);
+			trip.setElectric(sedanpremium);
 			trip.setSuv(suv);
 			trip.setSuvplus(suvplus);
 			trip.setSourceState(sourceState);
@@ -278,6 +279,7 @@ public class TripService {
 			newTrip.setHatchback(hatchbackPrice);
 			newTrip.setSedan(sedanPrice);
 			newTrip.setSedanpremium(sedanPremiumPrice);
+			newTrip.setElectric(sedanPremiumPrice);
 			newTrip.setSuv(suvPrice);
 			newTrip.setSuvplus(suvPlusPrice);
 			if (ertiga != null) {
@@ -291,6 +293,7 @@ public class TripService {
 				trip.setHatchback(hatchbackPrice);
 				trip.setSedan(sedanPrice);
 				trip.setSedanpremium(sedanPremiumPrice);
+				trip.setElectric(sedanPremiumPrice);
 				trip.setSuv(suvPrice);
 				trip.setSuvplus(suvPlusPrice);
 				if (ertiga != null) {
@@ -325,6 +328,7 @@ public class TripService {
 			newTrip.setHatchback(hatchbackPrice);
 			newTrip.setSedan(sedanPrice);
 			newTrip.setSedanpremium(sedanPremiumPrice);
+			newTrip.setElectric(sedanPremiumPrice);
 			newTrip.setSuv(suvPrice);
 			newTrip.setSuvplus(suvPlusPrice);
 			if (ertiga != null) {
@@ -338,6 +342,7 @@ public class TripService {
 				trip.setHatchback(hatchbackPrice);
 				trip.setSedan(sedanPrice);
 				trip.setSedanpremium(sedanPremiumPrice);
+				trip.setElectric(sedanPremiumPrice);
 				trip.setSuv(suvPrice);
 				trip.setSuvplus(suvPlusPrice);
 				if (ertiga != null) {
@@ -490,6 +495,7 @@ public class TripService {
 		o.setHatchback(hatchbackPrice);
 		o.setSedan(sedanPrice);
 		o.setSedanpremium(sedanPremiumPrice);
+		o.setElectric(sedanPremiumPrice);
 		o.setSuv(suvPrice);
 		o.setSuvplus(suvPlusPrice);
 		o.setStatus("s");
@@ -509,11 +515,47 @@ public class TripService {
 		o.setHatchback(hatchbackPrice);
 		o.setSedan(sedanPrice);
 		o.setSedanpremium(sedanPremiumPrice);
+		o.setElectric(sedanPremiumPrice); // Set electric to default to sedanPremiumPrice
 		o.setSuv(suvPrice);
 		o.setSuvplus(suvPlusPrice);
 		o.setStatus("s");
 
 		return this.roundrepo.save(o);
+	}
+
+	public void updateElectricPriceForOneWayRoute(String sourceState, String destinationState, String sourceCity,
+			String destinationCity, int electricPrice) {
+		List<onewayTrip> trips = this.repo.findBySourceStateAndDestinationStateAndSourceCityAndDestinationCity(
+				sourceState, destinationState, sourceCity, destinationCity);
+		if (trips == null || trips.isEmpty()) {
+			return;
+		}
+		for (onewayTrip trip : trips) {
+			trip.setElectric(electricPrice);
+		}
+		this.repo.saveAll(trips);
+	}
+
+	public void updateElectricPriceForRoundWayRoute(String sourceState, String destinationState, String sourceCity,
+			String destinationCity, int electricPrice) {
+		List<roundTrip> trips = this.roundrepo.findBySourceStateAndDestinationStateAndSourceCityAndDestinationCity(
+				sourceState, destinationState, sourceCity, destinationCity);
+		if (trips == null || trips.isEmpty()) {
+			return;
+		}
+		for (roundTrip trip : trips) {
+			trip.setElectric(electricPrice);
+		}
+		this.roundrepo.saveAll(trips);
+	}
+
+	public void updateElectricPriceByOneWayId(Long id, int electricPrice) {
+		Optional<onewayTrip> tripOptional = repo.findById(id);
+		if (tripOptional.isPresent()) {
+			onewayTrip trip = tripOptional.get();
+			trip.setElectric(electricPrice);
+			repo.save(trip);
+		}
 	}
 
 	public List<onewayTrip> getAllTransportRates() {

@@ -203,6 +203,13 @@ public class WtlAdminController {
         onewayTrip updatedTrip = tripSer.updatePrice(id, request.getHatchback(), request.getSedan(),
                 request.getSedanpremium(), request.getSuv(), request.getSuvplus(), request.getSourceState(),
                 request.getSourceCity(), request.getDestinationState(), request.getDestinationCity());
+
+        // If electric is present in request, update it explicitly as well.
+        // This keeps backward compatibility with existing clients.
+        try {
+            tripSer.updateElectricPriceByOneWayId(id, request.getElectric());
+        } catch (Exception ignored) {
+        }
         return ResponseEntity.ok(updatedTrip);
     }
 
@@ -215,6 +222,7 @@ public class WtlAdminController {
             @RequestParam int hatchbackPrice,
             @RequestParam int sedanPrice,
             @RequestParam int sedanPremiumPrice,
+            @RequestParam(required = false) Integer electricPrice,
             @RequestParam int suvPrice,
             @RequestParam int suvPlusPrice,
             @RequestParam(required = false) Integer ertiga) {
@@ -228,6 +236,7 @@ public class WtlAdminController {
         System.out.println("  hatchbackPrice=" + hatchbackPrice);
         System.out.println("  sedanPrice=" + sedanPrice);
         System.out.println("  sedanPremiumPrice=" + sedanPremiumPrice);
+        System.out.println("  electricPrice=" + electricPrice);
         System.out.println("  suvPrice=" + suvPrice);
         System.out.println("  suvPlusPrice=" + suvPlusPrice);
         System.out.println("  ertiga=" + ertiga);
@@ -235,6 +244,11 @@ public class WtlAdminController {
         // Call the service to update trip prices
         tripSer.updatePrices(sourceState, destinationState, sourceCity, destinationCity,
                 hatchbackPrice, sedanPrice, sedanPremiumPrice, suvPrice, suvPlusPrice, ertiga);
+
+        if (electricPrice != null) {
+            tripSer.updateElectricPriceForOneWayRoute(sourceState, destinationState, sourceCity, destinationCity,
+                    electricPrice);
+        }
 
         // Construct a JSON response
         Map<String, String> response = new HashMap<>();
@@ -324,6 +338,7 @@ public class WtlAdminController {
             @RequestParam int hatchbackPrice,
             @RequestParam int sedanPrice,
             @RequestParam int sedanPremiumPrice,
+            @RequestParam(required = false) Integer electricPrice,
             @RequestParam int suvPrice,
             @RequestParam int suvPlusPrice,
             @RequestParam(required = false) Integer ertiga) {
@@ -331,6 +346,11 @@ public class WtlAdminController {
         // Call the service to update trip prices (now with Ertiga)
         tripSer.updatePricesByRoundWay(sourceState, destinationState, sourceCity, destinationCity,
                 hatchbackPrice, sedanPrice, sedanPremiumPrice, suvPrice, suvPlusPrice, ertiga);
+
+        if (electricPrice != null) {
+            tripSer.updateElectricPriceForRoundWayRoute(sourceState, destinationState, sourceCity, destinationCity,
+                    electricPrice);
+        }
 
         // Construct a JSON response
         Map<String, String> response = new HashMap<>();
@@ -1843,6 +1863,7 @@ public class WtlAdminController {
             @RequestParam int hatchbackPrice,
             @RequestParam int sedanPrice,
             @RequestParam int sedanPremiumPrice,
+            @RequestParam(required = false) Integer electricPrice,
             @RequestParam int suvPrice,
             @RequestParam int suvPlusPrice,
             @RequestParam(required = false, defaultValue = "s") String status) {
@@ -1859,6 +1880,11 @@ public class WtlAdminController {
                 suvPrice,
                 suvPlusPrice,
                 status);
+
+        if (electricPrice != null) {
+            tripSer.updateElectricPriceForRoundWayRoute(sourceState, destinationState, sourceCity, destinationCity,
+                    electricPrice);
+        }
 
         // Return the saved one-way trip pricing object along with HTTP 200 OK status.
         return ResponseEntity.ok(savedTrip);
@@ -1880,6 +1906,7 @@ public class WtlAdminController {
             @RequestParam int hatchbackPrice,
             @RequestParam int sedanPrice,
             @RequestParam int sedanPremiumPrice,
+            @RequestParam(required = false) Integer electricPrice,
             @RequestParam int suvPrice,
             @RequestParam int suvPlusPrice,
             @RequestParam(required = false, defaultValue = "s") String status) {
@@ -1895,6 +1922,11 @@ public class WtlAdminController {
                 suvPrice,
                 suvPlusPrice,
                 status);
+
+        if (electricPrice != null) {
+            tripSer.updateElectricPriceForOneWayRoute(sourceState, destinationState, sourceCity, destinationCity,
+                    electricPrice);
+        }
 
         return ResponseEntity.ok(savedTrip);
     }

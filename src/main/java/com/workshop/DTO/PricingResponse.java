@@ -11,6 +11,7 @@ public class PricingResponse {
     private int suv;
     private int suvplus;
     private int ertiga;
+    private int electric;
 
     // ─── GETTERS & SETTERS ────────────────────────────────────────────────────────
 
@@ -60,6 +61,14 @@ public class PricingResponse {
 
     public void setErtiga(int ertiga) {
         this.ertiga = ertiga;
+    }
+
+    public int getElectric() {
+        return electric;
+    }
+
+    public void setElectric(int electric) {
+        this.electric = electric;
     }
 
     public int getMinDistance() {

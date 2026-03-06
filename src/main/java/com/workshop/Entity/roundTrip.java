@@ -34,6 +34,7 @@ public class roundTrip implements Trip, Serializable{
 	private LocalDate startDate;
     private LocalDate endDate;
 	private int ertiga;
+	private int electric;
 
 	private double distance;
 
@@ -161,7 +162,7 @@ public class roundTrip implements Trip, Serializable{
 	
 	public roundTrip(Long id, String sourceState, String sourceCity, String destinationState,
 			String destinationCity, int hatchback, int sedan, int sedanpremium, int suv, int suvplus,
-			String status, LocalDate startDate, LocalDate endDate, double distance, int ertiga) {
+			String status, LocalDate startDate, LocalDate endDate, double distance, int ertiga, int electric) {
 		super();
 		this.id = id;
 		this.sourceState = sourceState;
@@ -178,6 +179,15 @@ public class roundTrip implements Trip, Serializable{
 		this.endDate=endDate;
 		this.distance=distance;
 		this.ertiga=ertiga;
+		this.electric=electric;
+	}
+
+	public roundTrip(Long id, String sourceState, String sourceCity, String destinationState,
+			String destinationCity, int hatchback, int sedan, int sedanpremium, int suv, int suvplus,
+			String status, LocalDate startDate, LocalDate endDate, double distance, int ertiga) {
+		this(id, sourceState, sourceCity, destinationState, destinationCity,
+				hatchback, sedan, sedanpremium, suv, suvplus,
+				status, startDate, endDate, distance, ertiga, 0);
 	}
 
 	public roundTrip() {
@@ -199,6 +209,14 @@ public class roundTrip implements Trip, Serializable{
 
 	public void setErtiga(int ertiga) {
 		this.ertiga = ertiga;
+	}
+
+	public int getElectric() {
+		return electric;
+	}
+
+	public void setElectric(int electric) {
+		this.electric = electric;
 	}
 
 }
