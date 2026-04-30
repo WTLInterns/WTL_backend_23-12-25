@@ -87,14 +87,14 @@ enquiry.setTimeStamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyy
         "    </tr>" +
         "    <tr>" +
         "      <td style=\"padding:12px 20px 18px 20px;text-align:center;color:#9ca3af;font-family:Arial,Helvetica,sans-serif;font-size:12px;\">" +
-        "        © " + Year.now().getValue() + " WTl Tourism. All rights reserved." +
+        "        " + Year.now().getValue() + " WTl Tourism. All rights reserved." +
         "      </td>" +
         "    </tr>" +
         "  </table>" +
         "</body>" +
         "</html>";
 
-        String recipients = String.join(",","jaywant61495@gmail.com",
+        String recipients = String.join(",","contact@wordtriplink.com",
     "sjagtap1099@gmail.com",
     "dhpathan4812@gmail.com"
 );
