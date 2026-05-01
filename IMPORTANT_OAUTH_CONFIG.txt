@@ -27,7 +27,7 @@ COPY AND PASTE THIS INTO application.properties:
 spring.security.oauth2.client.registration.google.client-id=365994825852-4vulntbu51u5sf4gbo8kkheus2rkbthh.apps.googleusercontent.com
 spring.security.oauth2.client.registration.google.client-secret=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
 spring.security.oauth2.client.registration.google.scope=profile,email
-spring.security.oauth2.client.registration.google.redirect-uri=https://api.worldtriplink.com/login/oauth2/code/google
+spring.security.oauth2.client.registration.google.redirect-uri=http://localhost:8090/login/oauth2/code/google
 
 # OAuth2 Provider Configuration
 spring.security.oauth2.client.provider.google.authorization-uri=https://accounts.google.com/o/oauth2/auth

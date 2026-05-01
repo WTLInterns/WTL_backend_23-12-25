@@ -59,7 +59,7 @@ public class GoogleAuthController {
         
         String googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth?" +
                 "client_id=" + clientId +
-                "&redirect_uri=https://api.worldtriplink.com/login/oauth2/code/google" +
+                "&redirect_uri=http://localhost:8090/login/oauth2/code/google" +
                 "&response_type=code" +
                 "&scope=openid%20email%20profile" +
                 "&access_type=offline" +
@@ -171,7 +171,7 @@ public class GoogleAuthController {
     public ResponseEntity<?> getGoogleConfig() {
         Map<String, String> config = new HashMap<>();
         config.put("clientId", clientId);
-        config.put("redirectUri", "https://api.worldtriplink.com/auth/google/callback");
+        config.put("redirectUri", "http://localhost:8090/auth/google/callback");
         return ResponseEntity.ok(config);
     }
 }

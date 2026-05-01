@@ -32,7 +32,7 @@ public class GoogleAuthService {
     @Value("${spring.security.oauth2.client.registration.google.client-secret:}")
     private String clientSecret;
 
-    @Value("${spring.security.oauth2.client.registration.google.redirect-uri:https://api.worldtriplink.com/login/oauth2/code/google}")
+    @Value("${spring.security.oauth2.client.registration.google.redirect-uri:http://localhost:8090/login/oauth2/code/google}")
     private String redirectUri;
 
     private final RestTemplate restTemplate = new RestTemplate();

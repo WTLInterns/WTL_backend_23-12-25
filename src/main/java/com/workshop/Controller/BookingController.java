@@ -68,7 +68,7 @@ import com.workshop.Service.UserDetailServiceImpl;
 import com.workshop.Service.TripRateService;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3001,https://worldtriplink.com,https://api.worldtriplink.com")
+@CrossOrigin(origins = "http://localhost:3001,https://worldtriplink.com,http://localhost:8090")
 public class BookingController {
 	@Autowired
 	BookingService ser;
