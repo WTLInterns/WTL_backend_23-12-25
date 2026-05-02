@@ -93,7 +93,7 @@ public class EnquiryService {
             "  </table>" +
             "</body>" +
             "</html>";
-
+//Inquiry form details means mail content
         String recipients = "contact@wordtriplink.com,sjagtap1099@gmail.com,dhpathan4812@gmail.com";
 
         emailService.sendEmail(html, "New Enquiry Saved", recipients);
